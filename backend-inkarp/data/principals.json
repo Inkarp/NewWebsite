@@ -1,0 +1,78 @@
+[
+  {
+    "vertical": "Synthesis and Flow Chemistry",
+    "principal": "Heidolph",
+    "logo": "Heidolph",
+    "products": [
+      "Rotary Evaporators",
+      "Large-Scale Rotary Evaporators",
+      "Continuous Automatic Distillation Module",
+      "Magnetic Stirrers",
+      "Overhead Stirrers",
+      "Shakers & Mixers",
+      "Peristaltic Pumps",
+      "Processing Solutions",
+      "Smart cell cultivation"
+    ]
+  },
+  {
+    "vertical": "Synthesis and Flow Chemistry",
+    "principal": "Bruker",
+    "logo": "Bruker",
+    "products": [
+      "FTIR Spectrometer",
+      "FTIR Research Spectrometer",
+      "FT-NIR Spectrometer",
+      "Raman Spectrometer",
+      "FTIR Microscopes",
+      "Process Monitoring",
+      "Raman Microscopes"
+    ]
+  },
+  {
+    "vertical": "Synthesis and Flow Chemistry",
+    "principal": "Polyscience",
+    "logo": "Polyscience",
+    "products": [
+      "Circulating Baths",
+      "Application Specific",
+      "Chillers & Coolers"
+    ]
+  },
+  {
+    "vertical": "Synthesis and Flow Chemistry",
+    "principal": "Radleys",
+    "logo": "Radleys",
+    "products": [
+      "Automated Reaction Stations",
+      "Jacketed Lab Reactors",
+      "AVA Lab Control Software",
+      "Benchtop and Hotplate Tools",
+      "Parallel Reaction Stations"
+    ]
+  },
+  {
+    "vertical": "Synthesis and Flow Chemistry",
+    "principal": "Rotzmeier",
+    "logo": "Rotzmeier",
+    "products": [
+      "Saftey cans -for in-plant use",
+      "Safety canisters -for in-plant use",
+      "Safety barrels -for in-plant use",
+      "Transportation containers and UN-approval",
+      "Funnels",
+      "Accessories"
+    ]
+  },
+  {
+    "vertical": "Synthesis and Flow Chemistry",
+    "principal": "ThalesNano",
+    "logo": "ThalesNano",
+    "products": [
+      "H-Cube Systems",
+      "Hydrogen Gas Generators",
+      "Phoenix Flow Systems",
+      "PhotoCube"
+    ]
+  }
+]
