@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,useRef} from "react";
 
 // Row One Imports
 import Heidolph from '/src/assets/PrincipalLogos/RowOne/Heidolph.svg';
@@ -140,17 +140,18 @@ const logoRings = [
 
 
 export default function Principles() {
-  const [viewport, setViewport] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+  const containerRef = useRef(null);
+  const [containerWidth, setContainerWidth] = useState(0);
 
   useEffect(() => {
-    const handleResize = () => {
-      setViewport({ width: window.innerWidth, height: window.innerHeight });
+    const updateSize = () => {
+      if (containerRef.current) {
+        setContainerWidth(containerRef.current.offsetWidth);
+      }
     };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    updateSize();
+    window.addEventListener("resize", updateSize);
+    return () => window.removeEventListener("resize", updateSize);
   }, []);
 
   const mergedLogoRings = [
@@ -162,160 +163,132 @@ export default function Principles() {
 
   const logoWidth = 80;
   const logoHeight = 60;
-  const ringSpacing = 90;
-  const baseRadius = 120;
+  const ringSpacing = 100;
+  const baseRadius = 100;
   const totalRadius = baseRadius + ringSpacing * (mergedLogoRings.length - 1);
   const center = {
-    x: viewport.width / 2.5,
-    y: totalRadius + 30,
+    x: containerWidth / 2,
+    y: containerWidth /2.5 ,
   };
   const containerHeight = totalRadius * 2 + 120;
 
   return (
     <>
-      <div className="w-[90%] sm:w-[85%] md:w-[80%] mx-auto px-4 py-6 text-center">
-        <button className="px-4 py-1 text-center text-sm font-semibold uppercase border border-[#E63946] text-black rounded-full mb-4 font-[maxot]">
-          Our Principles
-        </button>
-        <h2 className="text-3xl font-[MaxOT] text-white leading-tight">
-          Strategic Alliances with Global Scientific Leaders
-        </h2>
-      </div>
+      
 
       <div
-        className="relative w-full min-h-[50vh] flex flex-col md:flex-row px-4 py-8 md:py-12 overflow-hidden"
-        style={{ height: `${containerHeight}px` }}
+        ref={containerRef}
+        className="relative w-[95%] mt-150 mx-auto overflow-visible"
+        style={{ height: `${containerHeight}px`, marginBottom: '100px' }}
       >
-
-        {/* Right Section: Orbit Rings */}
-        <div className="relative w-full md:w-2/3 flex justify-center items-center">
-          {/* Orbit Rings */}
-          {mergedLogoRings.map((_, ringIndex) => {
-            const radius = baseRadius + ringIndex * ringSpacing;
-            const diameter = radius * 2;
-            return (
-              <div
-                key={`orbit-ring-${ringIndex}`}
-                style={{
-                  position: "absolute",
-                  top: center.y - radius,
-                  left: center.x - radius,
-                  width: `${diameter}px`,
-                  height: `${diameter}px`,
-                  borderRadius: "50%",
-                  border: "3px solid #E63946",
-                  zIndex: 1,
-                }}
-              />
-            );
-          })}
-
-          {/* Center Logo */}
-          <div
-            style={{
-              position: "absolute",
-              top: center.y - 60,
-              left: center.x - 55,
-              width: "100px",
-              height: "100px",
-              zIndex: 50,
-              borderRadius: "50%",
-              boxShadow: "0 0 25px rgba(255, 0, 0, 0.3)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: "#fff",
-            }}
-          >
-            <img
-              src="inkarp old.svg"
-              alt="Inkarp"
-              style={{ width: "100%", height: "100%", objectFit: "contain" }}
+        <div className="text-center py-3 flex flex-col items-center justify-center gap-3">
+        <h4 className="px-4 py-1 text-center text-sm font-semibold uppercase border border-[#E63946] text-black rounded-full font-[MaxOT]">
+          Our Principles
+        </h4>
+        <h2 className="text-3xl font-[MaxOT] text-[#E63946] leading-tight">
+          Strategic Alliances with Global Scientific Leaders
+        </h2>
+      </div>
+        {/* Orbit Rings */}
+        {mergedLogoRings.map((_, ringIndex) => {
+          const radius = baseRadius + ringIndex * ringSpacing;
+          const diameter = radius * 2;
+          return (
+            <div
+              key={`orbit-ring-${ringIndex}`}
+              style={{
+                position: "absolute",
+                top: center.y - radius,
+                left: center.x - radius,
+                width: `${diameter}px`,
+                height: `${diameter}px`,
+                borderRadius: "50%",
+                border: "3px solid #E63946",
+                zIndex: 1,
+              }}
             />
-          </div>
+          );
+        })}
+        
 
-          {/* Logos on Rings */}
-          {mergedLogoRings.map((ring, ringIndex) => {
-            const radius = baseRadius + ringIndex * ringSpacing;
-            const angleStep = (2 * Math.PI) / ring.length;
-            const phaseShift = ringIndex % 2 === 1 ? angleStep / 2 : 0;
-
-            return ring.map((logo, idx) => {
-              const angle = angleStep * idx + phaseShift;
-              const x = center.x + radius * Math.cos(angle);
-              const y = center.y + radius * Math.sin(angle);
-
-              return (
-                <div
-                  key={`ring-${ringIndex}-logo-${idx}`}
-                  className="logo-container"
-                  style={{
-                    position: "absolute",
-                    top: y - logoHeight / 2,
-                    left: x - logoWidth / 2,
-                    width: `${logoWidth}px`,
-                    height: `${logoHeight}px`,
-                    // backgroundColor: "white",
-                    borderRadius: "8px",
-                    transition: "transform 0.3s ease",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    zIndex: 10,
-                  }}
-                >
-                  {/* <a
-                  href={logo.link || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ display: "block", width: "100%", height: "100%" }}
-                > */}
-                  <img
-                    src={logo.src}
-                    alt={logo.name}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "contain",
-                    }}
-                  />
-                  {/* </a> */}
-                </div>
-              );
-            });
-          })}
+        {/* Center Logo */}
+        <div
+          style={{
+            position: "absolute",
+            top: center.y - 60,
+            left: center.x - 55,
+            width: "100px",
+            height: "100px",
+            zIndex: 50,
+            borderRadius: "50%",
+            boxShadow: "0 0 25px rgba(255, 0, 0, 0.3)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "#fff",
+          }}
+        >
+          <img
+            src="inkarp old.svg"
+            alt="Inkarp"
+            style={{ width: "100%", height: "100%", objectFit: "contain" }}
+          />
         </div>
 
-        {/* Animation & Hover Styles */}
-        <style>{`
-      .logo-container:hover {
-        transform: scale(1.2);
-        z-index: 100;
-      }
+        {/* Logos */}
+        {mergedLogoRings.map((ring, ringIndex) => {
+          const radius = baseRadius + ringIndex * ringSpacing;
+          const angleStep = (2 * Math.PI) / ring.length;
+          const phaseShift = ringIndex % 2 === 1 ? angleStep / 2 : 0;
 
-      @media (max-width: 768px) {
-        .logo-container {
-          width: 60px !important;
-          height: 45px !important;
-        }
-      }
+          return ring.map((logo, idx) => {
+            const angle = angleStep * idx + phaseShift;
+            const x = center.x + radius * Math.cos(angle);
+            const y = center.y + radius * Math.sin(angle);
 
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    `}</style>
+            return (
+              <div
+                key={`ring-${ringIndex}-logo-${idx}`}
+                className="logo-container"
+                style={{
+                  position: "absolute",
+                  top: y - logoHeight / 2,
+                  left: x - logoWidth / 2,
+                  width: `${logoWidth}px`,
+                  height: `${logoHeight}px`,
+                  backgroundColor: "white",
+                  borderRadius: "8px",
+                  transition: "transform 0.3s ease",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  zIndex: 10,
+                }}
+              >
+                <img
+                  src={logo.src || logo} // use logo.src if structured that way
+                  alt={logo.name || "logo"}
+                  style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                />
+              </div>
+            );
+          });
+        })}
       </div>
+
+      <style>{`
+        .logo-container:hover {
+          transform: scale(1.2);
+          z-index: 100;
+        }
+
+        @media (max-width: 768px) {
+          .logo-container {
+            width: 60px !important;
+            height: 45px !important;
+          }
+        }
+      `}</style>
     </>
   );
-
 }
-
-
-

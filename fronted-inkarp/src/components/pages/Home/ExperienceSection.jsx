@@ -36,9 +36,18 @@ export default function ExperienceSection() {
   return (
     <section
       ref={sectionRef}
-      className={`relative bg-center text-white px-4 sm:px-6 md:px-10 transition-opacity duration-1000 ${visible ? "opacity-100" : "opacity-50"
+      className={`relative bg-center text-white px-4 sm:px-6 md:px-10 w-[95%] mx-auto transition-opacity duration-1000 ${visible ? "opacity-100" : "opacity-50"
         }`}
     >
+      <div className="text-center py-3 flex flex-col items-center justify-center gap-3">
+        <h4 className="px-4 py-1 text-center text-sm font-[MaxOT] font-semibold uppercase border border-[#E63946] text-black rounded-full ">
+          Who are we
+        </h4>
+        <h1 className="text-3xl text-[#E63946] font-[MaxOT] leading-tight">
+          {/* Precision Picks:  */}
+           We'll Ensure You Always get the Best Results
+        </h1>
+      </div>
       {/* Blinking cursor */}
       <style>{`
         .cursor {
@@ -52,6 +61,7 @@ export default function ExperienceSection() {
       `}</style>
 
       <div className="flex flex-col lg:flex-row items-center justify-between gap-10 bg-black p-6 rounded-2xl">
+
         {/* Left Column */}
         <div className="w-full lg:w-1/3 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
           <div className="w-full flex justify-center lg:justify-start">

@@ -240,11 +240,11 @@ export default function Offerings() {
 
   return (
     <div className="w-full flex flex-col items-center justify-center py-5 mt-8">
-      <div className="text-center px-3">
-        <button className="px-4 py-1 text-sm font-semibold uppercase border border-[#E63946] font-[MaxOT] text-black rounded-full ">
+      <div className="text-center py-3 flex flex-col items-center justify-center gap-3">
+        <h4 className="px-4 py-1 text-sm font-semibold uppercase border border-[#E63946] font-[MaxOT] text-black rounded-full ">
           Our Offerings
-        </button>
-        <h2 className="text-3xl py-3 font-bold font-[MaxOT] text-[#E63946] leading-tight">
+        </h4>
+        <h2 className="text-3xl font-[MaxOT] text-[#E63946] leading-tight">
           Explore Our Scientific Focus Areas
         </h2>
       </div>
@@ -264,4 +264,3 @@ export default function Offerings() {
     </div>
   );
 }
-

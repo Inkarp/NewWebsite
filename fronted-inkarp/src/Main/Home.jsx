@@ -124,7 +124,7 @@ const Home = () => {
       <Hero />
       <PickNew />
       <WhyChooseUsSection />
-      {/* <ExperienceSection /> */}
+      <ExperienceSection />
       <Sample />
       <About/>
       {isMobileOrTablet ? <NewAbout /> : <Companies />}
@@ -132,8 +132,8 @@ const Home = () => {
       <Offerings />
       <HomeBlogs />
       <NewsEvents />
-      {/* <ClientReviews /> */}
-      <Reviews />
+      <ClientReviews />
+      {/* <Reviews /> */}
     </>
   );
 };

@@ -68,7 +68,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="text-white bg-white w-[99%] rounded-2xl shadow-xl mx-auto mt-2 border border-gray-200">
+    <footer className=" z-50 text-white bg-white w-[99%] rounded-2xl shadow-xl mx-auto mt-2 border border-gray-200">
       {/* Subscribe Section */}
       <div className="flex flex-col lg:flex-row items-center justify-center gap-6 px-4 py-5 rounded-t-xl">
         <img

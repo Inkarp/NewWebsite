@@ -267,7 +267,7 @@ export default function Hero() {
   };
 
   return (
-    <div className="relative w-full max-w-[98vw] mx-auto h-[320px] xs:h-[400px] sm:h-[450px] md:h-[520px] lg:h-[600px]  overflow-hidden">
+    <div className="relative w-full max-w-[95%] mx-auto h-[320px] xs:h-[400px] sm:h-[450px] md:h-[520px] lg:h-[600px]  overflow-hidden m-5 rounded-3xl">
       {/* Background image or video with direct transition */}
       <AnimatePresence mode="sync">
         {slides[current].isVideo ? (
@@ -325,7 +325,7 @@ export default function Hero() {
       {/* Text Content with Typing Animation */}
       <motion.div
         key={`text-${slides[current].id}`}
-        className="absolute bottom-0 z-10 w-full text-white text-center px-2 xs:px-4 pb-6 xs:pb-10 sm:pb-12 flex justify-center"
+        className="absolute bottom-0 z-10 w-full text-white text-center px-2 xs:px-4 pb-6 xs:pb-10 sm:pb-12 flex justify-center "
       >
         <div className="bg-black/30 backdrop-blur-[1px] rounded-t-2xl p-3 xs:p-6 max-w-xs xs:max-w-2xl sm:max-w-3xl md:max-w-4xl mx-auto">
           <motion.span

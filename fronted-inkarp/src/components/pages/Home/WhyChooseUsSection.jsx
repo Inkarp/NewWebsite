@@ -22,7 +22,7 @@ const options = [
     tagline: 'Tailored Solutions for You',
     description: 'We provide trusted consultation and precision instruments designed for:',
     icon: <PillBottle className="w-5 h-5 text-white" />,
-    image:Pharma1,
+    image: Pharma1,
     content: [
       'Streamlining R&D and manufacturing processes',
       'Regulatory compliance support',
@@ -61,7 +61,7 @@ const options = [
     tagline: 'Reliable Tools for Accurate Detection',
     description: 'From sample prep to final analysis, our tools help improve diagnostics workflows:',
     icon: <Microscope className="w-5 h-5 text-white" />,
-    image:Diagno,
+    image: Diagno,
     content: [
       'Precision instruments for clinical and molecular diagnostics',
       'High-sensitivity detection systems for critical testing',
@@ -94,95 +94,97 @@ export default function WhyChooseUsSection() {
   const activeOption = options[active];
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8 }}
-      className=" py-5 md:px-10 lg:px-20"
-    >
-      <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center swing-top-bwd">
-          <button className="px-4 py-1 text-sm font-semibold font-[MaxOT] uppercase border border-[#E63946] text-black rounded-full mb-4">
-            Industries We Serve
-          </button>
-          <h2 className="text-3xl font-[MaxOT] text-[#E63946] leading-tight">
-            Solutions Tailored to Your Industry
-          </h2>
-        </div>
+    <>
+      <div className="text-center flex flex-col py-3 justify-center items-center gap-3">
+        <h4 className="px-4 py-1 text-sm font-semibold font-[MaxOT] uppercase border border-[#E63946] text-black rounded-full">
+          Industries We Serve
+        </h4>
+        <h1 className="text-3xl font-[MaxOT] text-[#E63946] leading-tight">
+          Solutions Tailored to Your Industry
+        </h1>
+      </div>
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8 }}
+        className="w-[95%] mx-auto p-5"
+      >
 
-        <div className="flex flex-col lg:flex-row items-start gap-10 px-4 py-3 sm:px-8 lg:px-0">
-          {/* LEFT - Industries */}
-          <div className="w-full lg:w-1/3">
-            <div className="flex flex-col gap-3">
-              {options.map((opt, index) => (
-                <button
-                  key={index}
-                  onClick={() => setActive(index)}
-                  className={`flex items-center justify-between w-full px-4 py-2 rounded-full border text-left text-lg   transition-all duration-300 font-[MaxOT]  ${active === index
-                    ? "bg-white text-[#E63946] shadow-md border-[#E63946] "
-                    : "bg-[#F5F5F5] text-black border-gray-300"
-                    }`}
-                >
-                  {opt.label}
-                  <span
-                    className={`w-8 h-8 flex items-center justify-center rounded-full ${active === index ? "bg-[#be0010]" : "bg-[#1b254b]"
+        <div className="p-5 rounded-3xl bg-[#F5F5F5]">
+          {/* Section Header */}
+
+          <div className="flex flex-col lg:flex-row items-start gap-10 px-4 py-3 sm:px-8 lg:px-0">
+            {/* LEFT - Industries */}
+            <div className="w-full lg:w-1/3">
+              <div className="flex flex-col gap-3">
+                {options.map((opt, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setActive(index)}
+                    className={`flex items-center justify-between w-full px-4 py-2 rounded-full border text-left text-lg   transition-all duration-300 font-[MaxOT]  ${active === index
+                      ? "bg-white text-[#E63946] shadow-md border-[#E63946] "
+                      : "bg-[#F5F5F5] text-black border-gray-300"
                       }`}
                   >
-                    {opt.icon}
-                  </span>
-                </button>
-              ))}
+                    {opt.label}
+                    <span
+                      className={`w-8 h-8 flex items-center justify-center rounded-full ${active === index ? "bg-[#be0010]" : "bg-[#1b254b]"
+                        }`}
+                    >
+                      {opt.icon}
+                    </span>
+                  </button>
+                ))}
+              </div>
             </div>
+
+            {/* MIDDLE - Image */}
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="w-full lg:w-[45%] flex justify-center items-center mt-6 lg:mt-0"
+            >
+              <div className="w-full overflow-hidden rounded-2xl shadow-md">
+                <img
+                  src={activeOption.image}
+                  alt={activeOption.label}
+                  className="w-full h-72 sm:h-80 object-cover rounded-2xl transition-transform duration-300 hover:scale-105"
+                />
+              </div>
+            </motion.div>
+
+
+            {/* RIGHT - Description */}
+            <motion.div
+              key={active + "-desc"}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="w-full lg:w-1/3 mt-6 lg:mt-0"
+            >
+              <h3 className="text-xl font-[MaxOT] font-semibold leading-snug mb-1">
+                {activeOption.tagline}
+              </h3>
+
+              <p className="mb-2 text-sm text-[#E63946] sm:text-base font-[Roboto]">
+                {activeOption.description}
+              </p>
+              <div className="space-y-1">
+                {activeOption.content.map((feat, i) => (
+                  <div key={i} className="flex items-start gap-2">
+                    <CheckCircle className="text-[#E63946] w-5 h-5 mt-1" />
+                    <span className="text-[16px] text-black font-[Roboto]">{feat}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           </div>
 
-          {/* MIDDLE - Image */}
-          <motion.div
-            key={active}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="w-full lg:w-[45%] flex justify-center items-center mt-6 lg:mt-0"
-          >
-            <div className="w-full overflow-hidden rounded-2xl shadow-md">
-              <img
-                src={activeOption.image}
-                alt={activeOption.label}
-                className="w-full h-72 sm:h-80 object-cover rounded-2xl transition-transform duration-300 hover:scale-105"
-              />
-            </div>
-          </motion.div>
-
-
-          {/* RIGHT - Description */}
-          <motion.div
-            key={active + "-desc"}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="w-full lg:w-1/3 mt-6 lg:mt-0"
-          >
-            <h3 className="text-xl font-[MaxOT] font-semibold leading-snug mb-1">
-              {activeOption.label}: 
-              {activeOption.tagline}
-            </h3>
-
-            <p className="mb-2 text-sm text-[#E63946] sm:text-base font-[Roboto]">
-              {activeOption.description}
-            </p>
-            <div className="space-y-3">
-              {activeOption.content.map((feat, i) => (
-                <div key={i} className="flex items-start gap-2">
-                  <CheckCircle className="text-[#E63946] w-5 h-5 mt-1" />
-                  <span className="text-[16px] text-black font-[Roboto]">{feat}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
         </div>
-
-      </div>
-    </motion.div>
+      </motion.div>
+    </>
   );
 }

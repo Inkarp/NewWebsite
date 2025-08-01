@@ -67,7 +67,7 @@ function App() {
         <Route element={<MainLayout />}>
           {/* Main Routes */}
           <Route index element={<Home />} />
-          
+
           <Route path="/about" element={<OurStory />} />
           <Route path="/careers" element={<Careers />} />
           {/* <Route path="/careers/positions" element={<CareersForm />} /> */}

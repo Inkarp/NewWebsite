@@ -22,7 +22,7 @@ export default function HomeBlogs() {
   };
 
   return (
-    <section className="w-full mx-auto p-3">
+    <section className="w-[95%] mx-auto p-3">
       {/* <div className="text-center mb-6 w-full"> */}
         <div className="mx-auto w-full flex  items-center justify-center text-center ">
           <div>

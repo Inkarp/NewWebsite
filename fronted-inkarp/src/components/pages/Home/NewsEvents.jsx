@@ -17,7 +17,7 @@ const NewsEvents = () => {
 
   return (
     <>
-    <aside className="relative p-2 ">
+    <aside className="relative p-2 w-[95%] mx-auto">
       <div className='flex items-center justify-center flex-col'>
        <p className="text-sm uppercase font-semibold border border-[#E63946] px-4 py-1 rounded-full inline-block mb-3 font-[MaxOT]">
             News & Events
