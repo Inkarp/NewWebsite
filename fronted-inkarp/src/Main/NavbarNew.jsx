@@ -62,10 +62,10 @@ export default function NavbarNew() {
     <>
       <header
         ref={navRef}
-        className={`fixed w-[95%] mx-auto top-2 rounded-3xl left-0 right-0 z-[9999] px-6 lg:px-12 py-2 transition-all duration-300 ${
+        className={`fixed w-[95%] mx-auto  rounded-3xl left-0 right-0 z-[9999] px-6 lg:px-12 py-2 transition-all duration-300 ${
           scrolled
-            ? "bg-white shadow-md backdrop-blur-md scale-[0.97]"
-            : "bg-black/10"
+            ? "bg-white shadow-md backdrop-blur-md scale-[0.97] top-0"
+            : "bg-black/10 top-2"
         }`}
       >
         <div className="max-w-screen-2xl mx-auto flex items-center justify-between font-[TTNormsPro] transition-all duration-300">
